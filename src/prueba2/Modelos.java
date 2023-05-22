@@ -24,22 +24,21 @@ public class Modelos {
 
         String sql = "";
 
-        modelo.addColumn("IDMODELO");
         modelo.addColumn("IDMARCA");
+        modelo.addColumn("NOMBREMARCA");
         modelo.addColumn("NOMBREMODELO");
-        modelo.addColumn("IDDIMENSION");
         modelo.addColumn("DESCRIPCION");
-        modelo.addColumn("STATUS");
-        modelo.addColumn("ELIMINADO");
-        modelo.addColumn("USUARIO_ALTA");
         modelo.addColumn("MOV_FECHA_ALTA");
         modelo.addColumn("MOV_HORA_ALTA");
 
         tbTotal.setModel(modelo);
 
-        sql = "SELECT * FROM modelos where ELIMINADO='true'";
+        sql = "SELECT mo.IDMARCA, m.NOMBREMARCA, mo.NOMBREMODELO, mo.DESCRIPCION, mo.MOV_FECHA_ALTA, mo.MOV_HORA_ALTA "
+                + "FROM marcas m "
+                + "INNER JOIN modelos mo ON m.IDMARCA = mo.IDMARCA "
+                + "WHERE m.ELIMINADO = 'true'";
 
-        String[] dao = new String[10];
+        String[] dao = new String[6]; // Ajustar la longitud a 6
         Statement st;
 
         try {
@@ -53,10 +52,6 @@ public class Modelos {
                 dao[3] = rs.getString(4);
                 dao[4] = rs.getString(5);
                 dao[5] = rs.getString(6);
-                dao[6] = rs.getString(7);
-                dao[7] = rs.getString(8);
-                dao[8] = rs.getString(9);
-                dao[9] = rs.getString(10);
 
                 modelo.addRow(dao);
 
@@ -66,8 +61,9 @@ public class Modelos {
                 tbTotal.setModel(modelo);
             }
         } catch (Exception e) {
-            e.toString();
-            JOptionPane.showMessageDialog(null, "No se puede mostar la tabla " + e);
+            JOptionPane.showMessageDialog(null, "No se puede mostar la tabla " + e.toString());
+            e.printStackTrace();
         }
     }
+
 }

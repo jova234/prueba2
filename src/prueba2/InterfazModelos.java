@@ -88,7 +88,8 @@ public class InterfazModelos extends javax.swing.JFrame {
 
         btSalirVen.setBackground(new java.awt.Color(204, 255, 255));
         btSalirVen.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
-        btSalirVen.setText("Finalizar Programa");
+        btSalirVen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/prueba2/imagen/end.png"))); // NOI18N
+        btSalirVen.setText("Finalizar ");
         btSalirVen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalirVenActionPerformed(evt);
@@ -97,7 +98,8 @@ public class InterfazModelos extends javax.swing.JFrame {
 
         btVentana.setBackground(new java.awt.Color(204, 255, 255));
         btVentana.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
-        btVentana.setText("Ventana Anterior");
+        btVentana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/prueba2/imagen/arrow.png"))); // NOI18N
+        btVentana.setText(" Anterior");
         btVentana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btVentanaActionPerformed(evt);

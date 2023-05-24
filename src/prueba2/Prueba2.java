@@ -13,11 +13,11 @@ public class Prueba2 {
        Conexion con=Conexion.getInstance();
         Connection objetoConexion = con.getConexion();
         
-        interfaz formulario = new interfaz();
-        formulario.setVisible(true);
-        
-        /*InterfazModelos formulario=new InterfazModelos();
+        /*interfaz formulario = new interfaz();
         formulario.setVisible(true);*/
+        
+        InterfazModelos formulario=new InterfazModelos();
+        formulario.setVisible(true);
     }
     
 }

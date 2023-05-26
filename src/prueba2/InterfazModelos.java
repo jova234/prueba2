@@ -7,7 +7,6 @@ package prueba2;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.swing.JComboBox;
 
 /**
  *
@@ -104,6 +103,8 @@ public class InterfazModelos extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtFechaAlta = new javax.swing.JTextField();
         txtHoraAlta = new javax.swing.JTextField();
+        btModificar = new javax.swing.JButton();
+        btEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -233,6 +234,22 @@ public class InterfazModelos extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
         jLabel7.setText("Fecha Alta : ");
 
+        btModificar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
+        btModificar.setText("Modificar");
+        btModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btModificarActionPerformed(evt);
+            }
+        });
+
+        btEliminar.setFont(new java.awt.Font("Segoe UI Semibold", 2, 14)); // NOI18N
+        btEliminar.setText("Eliminar");
+        btEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -254,20 +271,27 @@ public class InterfazModelos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(txtIDMODELO, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombreMar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(btEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombreMar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(btModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDescripcion))
+                                .addComponent(txtDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cbxItems, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(btLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(btLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,7 +341,9 @@ public class InterfazModelos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxItems, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btModificar)
+                    .addComponent(btEliminar))
                 .addGap(54, 54, 54)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
@@ -328,7 +354,7 @@ public class InterfazModelos extends javax.swing.JFrame {
 
     private void tbTotalModelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTotalModelMouseClicked
         Modelos tabla = new Modelos();
-        tabla.SeleccionarModelo(tbTotalModel, txtIDMARCA, txtIDMODELO, txtNombreModel, txtNombreMar, txtDescripcion, txtFechaAlta, txtHoraAlta);
+        tabla.SeleccionarModelo(tbTotalModel, txtIDMARCA, txtIDMODELO, txtNombreModel, txtNombreMar, txtDescripcion, txtFechaAlta, txtHoraAlta, cbxItems);
     }//GEN-LAST:event_tbTotalModelMouseClicked
 
     private void btSalirVenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirVenActionPerformed
@@ -342,7 +368,7 @@ public class InterfazModelos extends javax.swing.JFrame {
     }//GEN-LAST:event_btVentanaActionPerformed
 
     private void cbxItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxItemsActionPerformed
-    
+
     }//GEN-LAST:event_cbxItemsActionPerformed
 
     private void btLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimpiarActionPerformed
@@ -352,8 +378,23 @@ public class InterfazModelos extends javax.swing.JFrame {
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
         Modelos objeto = new Modelos();
         objeto.InsertarModelo(txtNombreModel, txtDescripcion, txtFechaAlta, txtHoraAlta, cbxItems);
+        objeto.MostarTablaModel(tbTotalModel);
         limpiar();
     }//GEN-LAST:event_btGuardarActionPerformed
+
+    private void btModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarActionPerformed
+        Modelos objeto = new Modelos();
+        objeto.ModificarModelo(txtIDMODELO, txtNombreModel, txtDescripcion, txtFechaAlta, txtHoraAlta, cbxItems);
+        objeto.MostarTablaModel(tbTotalModel);
+        limpiar();
+    }//GEN-LAST:event_btModificarActionPerformed
+
+    private void btEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarActionPerformed
+        Modelos objeto = new Modelos();
+        objeto.Eliminar(txtIDMODELO);
+        objeto.MostarTablaModel(tbTotalModel);
+        limpiar();
+    }//GEN-LAST:event_btEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,8 +432,10 @@ public class InterfazModelos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEliminar;
     private javax.swing.JButton btGuardar;
     private javax.swing.JButton btLimpiar;
+    private javax.swing.JButton btModificar;
     private javax.swing.JButton btSalirVen;
     private javax.swing.JButton btVentana;
     private javax.swing.JComboBox<String> cbxItems;
